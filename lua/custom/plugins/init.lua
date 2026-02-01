@@ -5,6 +5,15 @@
 -- ~/.config/nvim/lua/custom/plugins/init.lua
 return {
   {
+    'junegunn/fzf.vim',
+    dependencies = {
+      {
+        'junegunn/fzf',
+        build = './install --bin',
+      },
+    },
+  },
+  {
     'fatih/vim-go',
     ft = { 'go' },
     build = ':GoUpdateBinaries',
@@ -25,11 +34,7 @@ return {
         callback = function()
           local opts = { silent = true, buffer = true }
           vim.keymap.set('n', '<leader>b', '<Plug>(go-build)', opts)
-          vim.keymap.set('n', '<leader>r', '<Plug>(go-run)', opts)
           vim.keymap.set('n', '<leader>tc', '<Plug>(go-test-compile)', opts)
-          vim.keymap.set('n', '<leader>tr', '<Plug>(go-test)', opts)
-          vim.keymap.set('n', '<leader>i', '<Plug>(go-info)', opts)
-          vim.keymap.set('n', '<leader>s', '<Plug>(go-decls)', opts)
           vim.keymap.set('n', 'gs', '<Plug>(go-decls)', opts)
         end,
       })
